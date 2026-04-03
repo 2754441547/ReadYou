@@ -20,10 +20,11 @@ import me.ash.reader.ui.theme.palette.LocalTonalPalettes
 import me.ash.reader.ui.theme.palette.TonalPalettes
 import me.ash.reader.ui.theme.palette.core.ProvideZcamViewingConditions
 import me.ash.reader.ui.theme.palette.dynamic.extractTonalPalettesFromUserWallpaper
+import me.ash.reader.ui.theme.palette.dynamicDarkColorScheme
+import me.ash.reader.ui.theme.palette.dynamicLightColorScheme
 
 // 微信公众号风格配色
 private val WeChatGreen = Color(0xFF07C160)
-private val WeChatGreenDark = Color(0xFF06AD56)
 
 private val WeChatLightColorScheme = lightColorScheme(
     primary = WeChatGreen,
@@ -116,16 +117,10 @@ fun AppTheme(
             LocalTextStyle provides LocalTextStyle.current.applyTextDirection(),
         ) {
             // 使用微信风格的固定配色方案
-            val lightColors = WeChatLightColorScheme
-            val darkColors = WeChatDarkColorScheme
-            
             MaterialTheme(
                 motionScheme = MotionScheme.expressive(),
-                colorScheme = if (useDarkTheme) darkColors else lightColors,
-                typography =
-                    LocalBasicFonts.current
-                        .asTypography(LocalContext.current)
-                        .applyTextDirection(),
+                colorScheme = if (useDarkTheme) WeChatDarkColorScheme else WeChatLightColorScheme,
+                typography = LocalBasicFonts.current.asTypography(LocalContext.current).applyTextDirection(),
                 shapes = Shapes,
                 content = content,
             )

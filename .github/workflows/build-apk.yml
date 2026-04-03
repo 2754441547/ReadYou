@@ -19,12 +19,12 @@ jobs:
       
       - uses: gradle/gradle-build-action@v2.4.2
       
-      - name: Build Release APK
-        run: gradle assembleGithubRelease
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
       
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: ReadYou-WeChat-Style-APK
-          path: app/build/outputs/apk/github/release/*.apk
+          name: ReadYou-WeChat-Style
+          path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30

@@ -12,9 +12,9 @@ jobs:
                   java-version: 17
 
             - uses: gradle/gradle-build-action@v2.4.2
-            - run: gradle assembleGithubRelease
+            - run: ./gradlew assembleDebug
 
             - uses: actions/upload-artifact@v4
               with:
-                  name: ReadYou-GitHub-Build-${{ github.sha }}
-                  path: app/build/outputs/apk/github/release/*.apk
+                  name: ReadYou-Debug-${{ github.sha }}
+                  path: app/build/outputs/apk/debug/*.apk
